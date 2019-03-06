@@ -32,11 +32,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity ripple_tb is
-    port ( signal Ainput : in std_logic_vector(3 downto 0);
-           signal Binput : in std_logic_vector(3 downto 0);
-           signal C0Input : in std_logic;
-           signal C3Output : out std_logic; 
-           signal Svector :  out std_logic);
 end ripple_tb;
 
 architecture TestBench of ripple_tb is
@@ -49,7 +44,19 @@ component ripple_adder is
            C4 : out std_logic);
 end component;
 
+signal A : std_logic_vector(3 downto 0);
+signal B : std_logic_vector(3 downto 0);
+signal C0 : std_logic;
+signal sumVector : std_logic_vector(3 downto 0);
+signal finalCarryOut : std_logic;
+
 begin
+
+A <= "0101";
+B <= "0001";
+C0 <= '0';
+
+add :  ripple_adder port map(Avec => A, Bvec => B, C0 => C0, Svec => sumVector, C4 => finalCarryOut);
 
 
 
