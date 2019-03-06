@@ -1,0 +1,12 @@
+
+{ 
+    crc :  6261043238195547326  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto 698889f8be724a1cab6e7ffd89f77f3b --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ripple_adder_behav xil_defaultlib.ripple_adder" , 
+    buildDate : "Jun 14 2018" , 
+    buildTime : "20:07:38" , 
+    linkCmd : "/usr/bin/gcc -Wa,-W  -O -fPIC  -m64  -Wl,--unresolved-symbols=ignore-all  -o \"xsim.dir/ripple_adder_behav/xsimk\"   \"xsim.dir/ripple_adder_behav/obj/xsim_0.lnx64.o\" \"xsim.dir/ripple_adder_behav/obj/xsim_1.lnx64.o\" \"/usr/local/xilinx/Vivado/2018.2/lib/lnx64.o/librdi_simulator_kernel.so\"  \"/usr/local/xilinx/Vivado/2018.2/lib/lnx64.o/librdi_simbridge_kernel.so\"" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 
