@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03/06/2019 05:16:45 PM
+-- Create Date: 02/26/2019 10:35:57 AM
 -- Design Name: 
 -- Module Name: debounce - Behavioral
 -- Project Name: 
@@ -21,6 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.all;
+
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -32,12 +34,37 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity debounce is
---  Port ( );
+    Port( signal clk : in std_logic;
+          signal btn : in std_logic;
+          signal dbnc : out std_logic);
 end debounce;
 
 architecture Behavioral of debounce is
 
+signal counter : std_logic_vector(21 downto 0) := (others => '0');
+signal shift_register :  std_logic_vector(1 downto 0) := (others => '0');
+signal temp_shift : std_logic;
+
 begin
+
+process(clk)
+begin
+    if(rising_edge(clk)) then
+        temp_shift <= shift_register(0);
+        shift_register(0) <= btn;
+        shift_register(1) <= temp_shift;
+        if shift_register(1) = '1' then
+            counter <= std_logic_vector(unsigned(counter)+1);
+            if unsigned(counter) = 2500000 then
+                dbnc <= '1';
+            end if;
+        else 
+            counter <= (others => '0');
+            dbnc <= '0';
+        end if;
+    end if;
+end process;
+
 
 
 end Behavioral;
